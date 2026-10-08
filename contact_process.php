@@ -1,42 +1,55 @@
 <?php
+$pageTitle = 'Tambah Berita - Admin Praktikum';
+?>
 
-require_once 'config/database.php';
+<!doctype html>
+<html lang="id">
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= htmlspecialchars($pageTitle) ?></title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
 
-    header('Location: contact.php');
+<body>
 
-    exit;
-}
+<section class="section">
+    <div class="container article-body">
 
-$nama = trim($_POST['nama'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$pesan = trim($_POST['pesan'] ?? '');
+        <span class="eyebrow">Admin Lokal</span>
 
-if (
-    $nama === '' ||
-    $pesan === '' ||
-    !filter_var($email, FILTER_VALIDATE_EMAIL)
-) {
+        <h1>Tambah berita</h1>
 
-    exit('Data tidak valid. Silakan kembali dan periksa input.');
+        <div class="alert alert-success">
+            Halaman ini hanya untuk simulasi lokal dan belum memakai autentikasi admin.
+        </div>
 
-}
+        <form class="card" action="save_news.php" method="post">
 
-$stmt = $conn->prepare(
-    "INSERT INTO pesan (nama, email, pesan)
-     VALUES (?, ?, ?)"
-);
+            <div class="form-group">
+                <label for="judul">Judul</label>
+                <input id="judul" name="judul" required>
+            </div>
 
-$stmt->bind_param(
-    'sss',
-    $nama,
-    $email,
-    $pesan
-);
+            <div class="form-group">
+                <label for="ringkasan">Ringkasan</label>
+                <textarea id="ringkasan" name="ringkasan" required></textarea>
+            </div>
 
-$stmt->execute();
+            <div class="form-group">
+                <label for="isi">Isi</label>
+                <textarea id="isi" name="isi" required></textarea>
+            </div>
 
-header('Location: contact.php?success=1');
+            <button class="btn btn-primary" type="submit">
+                Simpan Berita
+            </button>
 
-exit;
+        </form>
+
+    </div>
+</section>
+
+</body>
+</html>
