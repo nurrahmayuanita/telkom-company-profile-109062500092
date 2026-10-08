@@ -54,7 +54,7 @@ require 'includes/header.php';
         <div class="grid-3"> 
             <article class="card"> 
                 <h3>Teknologi</h3> 
-                <p>Mempelajari teknologi informasi dan pengembangan sistem.</p> 
+                <p>Mempelajari teknologi informasi dan pengembangan sistem berbasis web.</p> 
             </article> 
  
             <article class="card"> 
