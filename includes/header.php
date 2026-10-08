@@ -35,7 +35,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 Beranda
             </a>
 
-            <a class="<?= $currentPage === 'profile.php' ? 'active' : '' ?>"
+            <a class="<?= $currentPage === 'Tentang Kampus' ? 'active' : '' ?>"
                href="profile.php">
                 Profil
             </a>
